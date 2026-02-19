@@ -1,0 +1,44 @@
+<h1>Flight Booker</h1>
+
+<%= form_with url: flights_path, method: :get, class: "search-form" do |f| %>
+  <%= f.label :departure_code do |text| %>
+    <%= text %>
+    <%= f.select :departure_code, options_for_select(@airport_codes_options), prompt: "Select the departure airport" %>
+  <% end %>
+
+  <%= f.label :arrival_code do |text| %>
+    <%= text %>
+    <%= f.select :arrival_code, options_for_select(@airport_codes_options), prompt: "Select the arrival airport" %>
+  <% end %>
+
+  <%= f.label :number_of_passengers do |text| %>
+    <%= text %>
+    <%= f.select :number_of_passengers, options_for_select(1..4), prompt: "Select the number of passengers" %>
+  <% end %>
+
+  <%= f.label :date do |text| %>
+    <%= text %>
+    <%= f.collection_select :date, @available_dates, :date, :pretty_date, prompt: "Select an available date" %>
+  <% end %>
+
+  <%= f.button "Search flights" %>
+<% end %>
+
+<% if @flights&.any? %>
+  <%= form_with url: false, method: :get, class: "choose-flight-form" do |f| %>
+    <%= f.hidden_field :number_of_passengers, value: @number_of_passengers %>
+
+    <fieldset>
+      <legend>Choose your flight</legend>
+
+      <%= f.collection_radio_buttons :flight_id, @flights, :id, :pretty_format do |b| %>
+        <%= b.label do %>
+          <%= b.radio_button %>
+          <%= b.text %>
+        <% end %>
+      <% end %>
+    </fieldset>
+
+    <%= f.button "Select Flight" %>
+  <% end %>
+<% end %>
