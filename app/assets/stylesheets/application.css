@@ -8,3 +8,42 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+form {
+  background-color: hsl(from grey h s calc(l + 35));
+  padding: 16px;
+  box-shadow: 1px 1px 12px hsl(0 0% 0% / 0.2);
+  border-radius: 10px;
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+
+  & label {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+
+    & select {
+      width: 30ch;
+    }
+  }
+
+  & button {
+    margin-top: 16px;
+    align-self: center;
+  }
+
+  & fieldset {
+    border-color: hsl(from currentColor h s calc(l - 20));
+  }
+}
