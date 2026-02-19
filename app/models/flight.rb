@@ -1,6 +1,7 @@
 class Flight < ApplicationRecord
   belongs_to :departure_airport, class_name: "Airport"
   belongs_to :arrival_airport, class_name: "Airport"
+  has_many :bookings
 
   def self.available_dates
     # Self reminder: passing a symbol to ::order doesn't work when a string is passed to ::select
