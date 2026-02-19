@@ -18,7 +18,7 @@ end
       Flight.find_or_create_by!(
         departure_airport_id: departure_airport_id,
         arrival_airport_id: arrival_airport_id,
-        date: Time.current.midnight + (i + 1).day + rand(1..24).hour,
+        date: Time.current.midnight + (i + 1).day + rand(0..24).hour,
         duration: (1..6).step(0.5).map { |time| time.hour.in_minutes }.sample
       )
     end
