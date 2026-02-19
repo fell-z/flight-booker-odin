@@ -1,0 +1,15 @@
+<h1>Booking</h1>
+
+<p>
+  <%= link_to "Home", root_path %>
+</p>
+
+<%= render @booking.flight, inside_form: false %>
+
+<div class="details">
+  <h2>Passenger Details</h2>
+
+  <ol>
+    <%= render @booking.passengers %>
+  </ol>
+</div>

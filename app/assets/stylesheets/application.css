@@ -15,6 +15,7 @@ body {
   gap: 16px;
 }
 
+.details,
 form {
   background-color: hsl(from grey h s calc(l + 35));
   padding: 16px;
@@ -25,7 +26,9 @@ form {
   display: flex;
   flex-direction: column;
   width: fit-content;
+}
 
+form {
   & label {
     display: flex;
     flex: 1;
@@ -45,5 +48,19 @@ form {
 
   & fieldset {
     border-color: hsl(from currentColor h s calc(l - 20));
+  }
+}
+
+
+ol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: fit-content;
+
+  & li {
+    background-color: hsl(from grey h s calc(l + 25));
+    padding: 8px 16px;
+    border-radius: 4px;
   }
 }

@@ -1,0 +1,29 @@
+<h1>New booking</h1>
+
+<%= form_with model: @booking do |f| %>
+  <%= render @booking.flight, inside_form: true %>
+
+  <fieldset>
+    <legend>Passengers</legend>
+
+    <ol>
+      <%= f.fields_for :passengers do |passenger_fields| %>
+        <li>
+          <%= passenger_fields.label :name do |text| %>
+            <%= text %>
+            <%= passenger_fields.text_field :name %>
+          <% end %>
+
+          <%= passenger_fields.label :email do |text| %>
+            <%= text %>
+            <%= passenger_fields.email_field :email %>
+          <% end %>
+        </li>
+      <% end %>
+    </ol>
+  </fieldset>
+
+  <%= f.hidden_field :flight_id %>
+
+  <%= f.button "Make new booking" %>
+<% end %>

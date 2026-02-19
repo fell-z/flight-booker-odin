@@ -4,7 +4,7 @@ class FlightsController < ApplicationController
     @available_dates = Flight.available_dates
 
     if search_sent?
-      @flights = Flight.where(
+      @flights = Flight.order(:date).where(
         departure_airport: Airport.find_by(code: params[:departure_code]),
         arrival_airport: Airport.find_by(code: params[:arrival_code]),
         date: params[:date].to_date.all_day

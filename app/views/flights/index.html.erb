@@ -1,5 +1,9 @@
 <h1>Flight Booker</h1>
 
+<p>
+  <%= link_to "Home", root_path %>
+</p>
+
 <%= form_with url: flights_path, method: :get, class: "search-form" do |f| %>
   <%= f.label :departure_code do |text| %>
     <%= text %>
@@ -25,7 +29,7 @@
 <% end %>
 
 <% if @flights&.any? %>
-  <%= form_with url: false, method: :get, class: "choose-flight-form" do |f| %>
+  <%= form_with url: new_booking_path, method: :get, class: "choose-flight-form" do |f| %>
     <%= f.hidden_field :number_of_passengers, value: @number_of_passengers %>
 
     <fieldset>

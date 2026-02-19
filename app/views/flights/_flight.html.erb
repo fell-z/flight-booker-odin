@@ -1,0 +1,11 @@
+<div class="<%= 'details' unless inside_form %>">
+  <h2>Flight Details</h2>
+
+  <p>Flight ID: <%= flight.id %></p>
+
+  <p>Departure Airport: <%= flight.departure_airport.code %></p>
+
+  <p>Arrival Airport: <%= flight.arrival_airport.code %></p>
+
+  <p>Date: <%= flight.date.to_fs(:long) %></p>
+</div>
