@@ -1,0 +1,15 @@
+<%= form.fields_for :passengers, passenger, fields_options do |passenger_fields| %>
+  <li>
+    <%= passenger_fields.label :name do |text| %>
+      <%= text %>
+      <%= passenger_fields.text_field :name %>
+    <% end %>
+
+    <%= passenger_fields.label :email do |text| %>
+      <%= text %>
+      <%= passenger_fields.email_field :email %>
+    <% end %>
+
+    <button data-action="fieldset#remove" type="button">Remove passenger</button>
+  </li>
+<% end %>

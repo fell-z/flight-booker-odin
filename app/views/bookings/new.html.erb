@@ -3,24 +3,25 @@
 <%= form_with model: @booking do |f| %>
   <%= render @booking.flight, inside_form: true %>
 
-  <fieldset>
+  <fieldset
+    data-controller="fieldset"
+    data-fieldset-minimum-value="1"
+    data-fieldset-maximum-value="4"
+  >
     <legend>Passengers</legend>
 
-    <ol>
-      <%= f.fields_for :passengers do |passenger_fields| %>
-        <li>
-          <%= passenger_fields.label :name do |text| %>
-            <%= text %>
-            <%= passenger_fields.text_field :name %>
-          <% end %>
-
-          <%= passenger_fields.label :email do |text| %>
-            <%= text %>
-            <%= passenger_fields.email_field :email %>
-          <% end %>
-        </li>
-      <% end %>
+    <ol data-fieldset-target="fields">
+      <%= render "passengers/fields", form: f, passenger: nil, fields_options: nil %>
     </ol>
+
+    <template data-fieldset-target="template">
+      <%# 'child_index' is an odd option as it isn't documented on the API %>
+      <%= render "passengers/fields", form: f, passenger: Passenger.new, fields_options: { child_index: ":index" } %>
+    </template>
+
+    <div>
+      <button type="button" data-action="fieldset#add">Add passenger</button>
+    </div>
   </fieldset>
 
   <%= f.hidden_field :flight_id %>
